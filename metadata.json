@@ -1,0 +1,5 @@
+{
+  "name": "EcoTrace AI",
+  "description": "Trace and visualize the environmental impact (carbon, water, electricity) of your Gemini LLM API calls for sustainable AI development.",
+  "requestFramePermissions": []
+}
