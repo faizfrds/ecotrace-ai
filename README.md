@@ -35,7 +35,35 @@ EcoTrace AI serves as the "Hub" for the Leaftrail ecosystem:
 3. **The Ingestion:** The library automatically sends "traces" to EcoTrace AI's telemetry endpoint (`/api/v1/traces`).
 4. **The Visualization:** EcoTrace AI archives these traces and displays them in the dashboard.
 
+## 🔌 Monitoring an Existing App
+
+If you already have a Node.js/TypeScript application using the Google GenAI SDK, you can start monitoring it in minutes:
+
+1. **Create a Project:** Open EcoTrace AI, go to the **Projects** tab, and create a new project to generate your **EcoTrace API Key**.
+2. **Install Leaftrail:**
+   ```bash
+   npm install @faizfrds/leaftrail
+   ```
+3. **Initialize the Tracer:** Replace your standard `@google/generative-ai` initialization with the Leaftrail wrapper:
+   ```typescript
+   import { Leaftrail } from '@faizfrds/leaftrail';
+
+   const tracer = new Leaftrail({ 
+     apiKey: process.env.GEMINI_API_KEY,
+     region: 'us-central1', // Choose your deployment region
+     ecoTrace: {
+       endpoint: 'https://your-ecotrace-instance.com/api/v1/traces',
+       apiKey: 'your-ecotrace-project-key'
+     }
+   });
+
+   // Use it just like the standard SDK
+   const { response, trace } = await tracer.generateContent("Hello!");
+   ```
+4. **View Metrics:** Once your app starts making calls, head back to the EcoTrace AI dashboard to see your real-time environmental impact.
+
 ---
+
 
 ## 💻 Run Locally
 
